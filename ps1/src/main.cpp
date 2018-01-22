@@ -15,7 +15,7 @@ int main(int argc, char* argv[])
 		return EXIT_FAILURE;
 	}
 	
-	int n = 0;
+	int n = 1;
 	sscanf(argv[1], "%d", &n);
 	HourGlass h(n);
 	if (!h.valid())
