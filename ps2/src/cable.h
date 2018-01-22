@@ -22,6 +22,8 @@ public:
 	~Cable();
 	Cable(double area, double elasticModulus, double length, double strength);
 	Cable(Cable& a);
+	friend std::istream& operator >> (std::istream &i, Cable &c);
+	friend std::ostream& operator << (std::ostream &o, Cable &c);
 
 	/* Getters */
 	double getArea();

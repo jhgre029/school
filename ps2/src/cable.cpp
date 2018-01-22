@@ -17,6 +17,8 @@
 /*************************************************************************/
 Cable::Cable()
 {
+
+
 	this->area = 0;
 	this->elasticModulus = 0;
 	this->length = 0;
@@ -42,6 +44,37 @@ Cable::Cable(Cable& a)
 	this->elasticModulus = a.elasticModulus;
 	this->length = a.length;
 	this->strength = a.strength;
+}
+
+std::istream& operator>>(std::istream &i, Cable &c)
+{
+	std::cout << "Area: ";
+	std::cin.clear();
+	std::cin >> c.area;
+
+	std::cout << "Modulus of elasticity: ";
+	std::cin.clear();
+	std::cin >> c.elasticModulus;
+
+	std::cout << "Length: ";
+	std::cin.clear();
+	std::cin >> c.length;
+
+	std::cout << "Strength: ";
+	std::cin.clear();
+	std::cin >> c.strength;
+
+	return i;
+}
+
+std::ostream& operator << (std::ostream &o, Cable &c)
+{
+	std::cout << "   Area: " << c.getArea() << std::endl;
+	std::cout << "   Modulus of elasticity: " << c.getElasticModulus() << std::endl;
+	std::cout << "   Length: " << c.getLength() << std::endl;
+	std::cout << "   Strength: " << c.getStrength() << std::endl;
+
+	return o;
 }
 
 /*************************************************************************/

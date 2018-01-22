@@ -16,33 +16,16 @@ int readCableData(Cable **cableAssemblage)
 {
 	int cables;
 	int i;
-	int area, elasticModulus, length, strength;
+	double area, elasticModulus, length, strength;
 
 	std::cout << "Enter the number of cables in the assemblage: ";
 	std::cin >> cables;
 	
-	*cableAssemblage = (Cable*)malloc(cables * sizeof(Cable));
+	*cableAssemblage = new Cable[cables];
 	for (i = 0; i < cables; i++)
 	{
 		std::cout << "\n\nEnter the data for cable " << i + 1 << std::endl;
-		
-		std::cout << "\n\nArea: "; 
-		std::cin >> area;
-
-		std::cout << "\nModulus of elasticity: ";
-		std::cin >> elasticModulus;
-
-		std::cout << "\nLength: ";
-		std::cin >> length;
-		
-		std::cout << "\nStrength: ";
-		std::cin >> length;
-		
-		cableAssemblage[i]->setArea(area);
-		cableAssemblage[i]->setElasticModulus(elasticModulus);
-		cableAssemblage[i]->setLength(length);
-		cableAssemblage[i]->setStrength(strength);
-
+		std::cin >> *(*cableAssemblage + i);
 	}
 	
 	return cables;
@@ -63,23 +46,28 @@ void printCableData(Cable* cableAssemblage, int numberCables, double weight)
 	for (i = 0; i < numberCables; i++)
 	{
 		std::cout << "Cable " << i + 1 << std::endl;
-		std::cout << "   Area: " << cableAssemblage[i].getArea() << std::endl;
-		std::cout << "   Modulus of elasticity: " << cableAssemblage[i].getElasticModulus() << std::endl;
-		std::cout << "   Length: " << cableAssemblage[i].getLength() << std::endl;
-		std::cout << "   Strength: " << cableAssemblage[i].getStrength() << std::endl;
+		std::cout << *(cableAssemblage + i);
 	}	
 }
 
-bool checkStrength(Cable* cableAssemblage, int numberCables, double weight)
+bool checkStrength(Cable* cableAssemblage, const int numberCables, double weight)
 {
 	bool result = true;
 	int i;
 
 	for (i = 0; i < numberCables; i++)
 	{
-		if (cableAssemblage[i].failure(weight))
+		if (result && cableAssemblage[i].failure(weight))
 		{
+
 			result = false;
+			std::cout << "This assemblage cannot support the machinery." << std::endl;
+			std::cout << "Cable " << i + 1 << " will fail!!!" << std::endl;
+		}
+		
+		else if (cableAssemblage[i].failure(weight))
+		{
+			std::cout << "Cable " << i + 1 << " will fail!!!" << std::endl;
 		}
 	}
 
@@ -115,5 +103,5 @@ void determineExtensions(Cable *cableAssemblage, int numberCables, double weight
 
 void releaseMemory(Cable* cableAssemblage)
 {
-	free(cableAssemblage);
+	delete []cableAssemblage;
 }
