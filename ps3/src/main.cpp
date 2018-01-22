@@ -12,6 +12,8 @@
 #include <stdlib.h>
  
 /* Headers: */
+#include "Vehicle.h"
+#include "Motorvehicle.h"
  
 int main(int argc, char* argv[])
 {
