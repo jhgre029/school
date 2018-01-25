@@ -32,6 +32,7 @@ class Car : public MotorVehicle, private Property
 		/* Constructors and Destructors */
 		Car();
 		~Car();
+		friend std::ofstream& operator << (std::ofstream &o, Car c);
 
 		/* Getters */
 		int getSeats();

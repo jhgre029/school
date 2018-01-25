@@ -32,6 +32,7 @@ class Bike : public Vehicle, private Property
 		/* Constructors and Destructors */
 		Bike();
 		~Bike();
+		friend std::ofstream& operator << (std::ofstream &o, Bike &b);
 
 		/* Getters */
 		bool getHorn();

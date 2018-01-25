@@ -26,6 +26,8 @@ class Motorcycle : public MotorVehicle, private Property
 		int engineStrokes; //number of strokes of the engine
 		static int numberMotorcycles; //current number of motorcycles
 		static std::ofstream outFile; //output file 
+		static int list;
+		static bool outFileExist;
 
 	public:
 		/* Constructors and Destructors */
@@ -35,16 +37,13 @@ class Motorcycle : public MotorVehicle, private Property
 		/* Gettters */
 		int getEngineStrokes();
 		static int getNumberMotorcycles();
-		static std::ofstream getOutFile();
 
 		/* Setters */
 		void setEngineStrokes(int strokes);
-		static void setNumberMotorcycles(int num);
-		static void incrimentMotorcycles();
-		static void decrementMotorcycles();
-		static void setOutFile(std::ofstream outFile);
 		
 		/* Other Methods */
+		void createOutFile(char* filename);
+		void appOutFile(char* filename);
 };
 
 #endif//MOTORCYCLE_H

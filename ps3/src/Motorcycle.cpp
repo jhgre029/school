@@ -10,3 +10,90 @@
 /* Libraries: */
  
 /* Headers: */
+#include "Motorcycle.h"
+
+int Motorcycle::numberMotorcycles = 0;
+int Motorcycle::list = 1;
+bool Motorcycle::outFileExist = false;
+
+/*****************************************************************************/
+/* Constructors and Destructors */
+/*****************************************************************************/
+Motorcycle::Motorcycle()
+{
+	std::cout << "Engine Strokes: ";
+	std::cin >> engineStrokes;
+
+	++numberMotorcycles;
+}
+
+Motorcycle::~Motorcycle()
+{
+	std::cout << "Deleting a Motorcycle Object" << std::endl;
+	--numberMotorcycles;
+}
+
+/*****************************************************************************/
+/* Getters */
+/*****************************************************************************/
+int Motorcycle::getEngineStrokes()
+{
+	return engineStrokes;
+}
+
+int Motorcycle::getNumberMotorcycles()
+{
+	return numberMotorcycles;
+}
+
+/*****************************************************************************/
+/* Setters */
+/*****************************************************************************/
+void Motorcycle::setEngineStrokes(int strokes)
+{
+	engineStrokes = strokes;
+}
+
+/*****************************************************************************/
+/* Other Methods */
+/*****************************************************************************/
+void Motorcycle::createOutFile(char* filename)
+{
+	outFile.open(filename);
+	if (!outFile.is_open())
+	{
+		std::cout << "Could not open " << filename << std::endl;
+		return;
+	}
+
+	outFile << "  Brand\tModel\tType\tID\tWeight\tCC\tHP\tStrokes\tValue\tAdministrator" << std::endl;
+	outFile << "--------------------------------------------------------------------" << std::endl;
+
+	outFile.close();
+	outFileExist = true;
+}
+
+void Motorcycle::appOutFile(char* filename)
+{
+	outFile.open(filename, std::ios_base::app);
+	if (!outFile.is_open())
+	{
+		std::cout << "Could not open " << filename << std::endl;
+		return;
+	}
+
+	outFile << list 
+		<< " " << getBrand() 
+		<< " " << getModel() 
+		<< " " << getType() 
+		<< " " << getIDNumber()
+		<< " " << getWeight() 
+		<< " " << getCC() 
+		<< " " << getHP() 
+		<< " " << getEngineStrokes() 
+		<< " " << getEstimatedValue()
+		<< " " << getAdministrator() << std::endl;
+	++list;
+
+	outFile.close();
+}
