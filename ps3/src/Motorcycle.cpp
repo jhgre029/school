@@ -15,6 +15,7 @@
 int Motorcycle::numberMotorcycles = 0;
 int Motorcycle::list = 1;
 bool Motorcycle::outFileExist = false;
+std::ofstream Motorcycle::outFile;
 
 /*****************************************************************************/
 /* Constructors and Destructors */
@@ -57,12 +58,12 @@ void Motorcycle::setEngineStrokes(int strokes)
 /*****************************************************************************/
 /* Other Methods */
 /*****************************************************************************/
-void Motorcycle::createOutFile(char* filename)
+void Motorcycle::createOutFile()
 {
-	outFile.open(filename);
+	outFile.open("Motorcycle.dat", std::ios::out);
 	if (!outFile.is_open())
 	{
-		std::cout << "Could not open " << filename << std::endl;
+		std::cout << "Could not open Motorcycle.dat" << std::endl;
 		return;
 	}
 
@@ -73,17 +74,17 @@ void Motorcycle::createOutFile(char* filename)
 	outFileExist = true;
 }
 
-void Motorcycle::appOutFile(char* filename)
+void Motorcycle::appOutFile()
 {
-	outFile.open(filename, std::ios_base::app);
+	outFile.open("Motorcycle.dat", std::ios::out);
 	if (!outFile.is_open())
 	{
-		std::cout << "Could not open " << filename << std::endl;
+		std::cout << "Could not open Motorcycle.dat" << std::endl;
 		return;
 	}
 
-	outFile << list 
-		<< " " << getBrand() 
+	outFile << list
+		<< " " << getBrand()
 		<< " " << getModel() 
 		<< " " << getType() 
 		<< " " << getIDNumber()

@@ -42,8 +42,8 @@ class Motorcycle : public MotorVehicle, private Property
 		void setEngineStrokes(int strokes);
 		
 		/* Other Methods */
-		void createOutFile(char* filename);
-		void appOutFile(char* filename);
+		void createOutFile();
+		void appOutFile();
 };
 
 #endif//MOTORCYCLE_H
