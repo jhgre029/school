@@ -27,6 +27,8 @@ class Car : public MotorVehicle, private Property
 		int airBags;
 		static int numberCars;
 		static std::ofstream outFile;
+		static bool outFileExist;
+		static int list;
 
 	public:
 		/* Constructors and Destructors */
@@ -38,17 +40,14 @@ class Car : public MotorVehicle, private Property
 		int getSeats();
 		int getAirBags();
 		static int getNumberCars();
-		static std::ofstream getOutFile();
 
 		/* Setters */
 		void setSeats(int seats);
 		void setAirBags(int airBags);
 		static void setNumberCars(int num);
-		static void incrimentCars();
-		static void decrementCars();
-		static void setOutFile(std::ofstream outFile);
 
 		/* Other Methods */
+		void output();
 };
 
 #endif//CAR_H

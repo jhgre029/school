@@ -34,14 +34,14 @@ Vehicle::Vehicle()
 	std::cout << "Model: ";
 	std::cin >> temp;
 	model = new char[temp.length() + 1];
-	strcpy(brand, temp.c_str());
+	strcpy(model, temp.c_str());
 
 	std::cout << "Type: ";
 	std::cin >> temp;
 	type = new char[temp.length() + 1];
 	strcpy(type, temp.c_str());
 
-	incrimentVehicles();
+	++numberVehicles;
 }
 
 Vehicle::~Vehicle()
@@ -50,6 +50,7 @@ Vehicle::~Vehicle()
 	delete brand;
 	delete model;
 	delete type;
+	--numberVehicles;
 }
 
 /*****************************************************************************/

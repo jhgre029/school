@@ -15,7 +15,7 @@
 int Motorcycle::numberMotorcycles = 0;
 int Motorcycle::list = 1;
 bool Motorcycle::outFileExist = false;
-std::ofstream Motorcycle::outFile;
+std::ofstream Motorcycle::outFile("Motorcycle.dat", std::ios::out);
 
 /*****************************************************************************/
 /* Constructors and Destructors */
@@ -58,43 +58,33 @@ void Motorcycle::setEngineStrokes(int strokes)
 /*****************************************************************************/
 /* Other Methods */
 /*****************************************************************************/
-void Motorcycle::createOutFile()
+void Motorcycle::output()
 {
-	outFile.open("Motorcycle.dat", std::ios::out);
+	//outFile.open("Motorcycle.dat", std::ios::out);
 	if (!outFile.is_open())
 	{
 		std::cout << "Could not open Motorcycle.dat" << std::endl;
 		return;
 	}
 
-	outFile << "  Brand\tModel\tType\tID\tWeight\tCC\tHP\tStrokes\tValue\tAdministrator" << std::endl;
-	outFile << "--------------------------------------------------------------------" << std::endl;
-
-	outFile.close();
-	outFileExist = true;
-}
-
-void Motorcycle::appOutFile()
-{
-	outFile.open("Motorcycle.dat", std::ios::out);
-	if (!outFile.is_open())
+	if (!outFileExist)
 	{
-		std::cout << "Could not open Motorcycle.dat" << std::endl;
-		return;
+		outFile << "\tBrand\tModel\tType\tID\tWeight\tCC\tHP\tStrokes\tValue\tAdministrator" << std::endl;
+		outFile << "--------------------------------------------------------------------" << std::endl;
+		outFileExist = true;
 	}
+
 
 	outFile << list
-		<< " " << getBrand()
-		<< " " << getModel() 
-		<< " " << getType() 
-		<< " " << getIDNumber()
-		<< " " << getWeight() 
-		<< " " << getCC() 
-		<< " " << getHP() 
-		<< " " << getEngineStrokes() 
-		<< " " << getEstimatedValue()
-		<< " " << getAdministrator() << std::endl;
+		<< "\t" << getBrand()
+		<< "\t" << getModel()
+		<< "\t" << getType()
+		<< "\t" << getIDNumber()
+		<< "\t" << getWeight()
+		<< "\t" << getCC()
+		<< "\t" << getHP()
+		<< "\t" << getEngineStrokes()
+		<< "\t" << getEstimatedValue()
+		<< "\t" << getAdministrator() << std::endl;
 	++list;
-
-	outFile.close();
 }

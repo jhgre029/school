@@ -21,9 +21,9 @@ Property::Property()
 	std::cout << "Estimated Value: ";
 	std::cin >> this->estimatedValue;
 
-	std::cout << "Administrator";
+	std::cout << "Administrator: ";
 	std::cin >> temp;
-	this->administrator = new char[temp.length()];
+	this->administrator = new char[temp.length()+1];
 	strcpy(administrator, temp.c_str());
 }
 

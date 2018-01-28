@@ -25,12 +25,13 @@ MotorVehicle::MotorVehicle()
 	std::cout << "HP: ";
 	std::cin >> hp;
 
-	incrimentMotorVehicles();
+	++numberMotorVehicles;
 }
 
 MotorVehicle::~MotorVehicle()
 {
 	std::cout << "Destroying a MotorVehicle Object" << std::endl;
+	--numberMotorVehicles;
 }
 
 /*****************************************************************************/
