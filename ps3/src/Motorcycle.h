@@ -43,6 +43,7 @@ class Motorcycle : public MotorVehicle, private Property
 		
 		/* Other Methods */
 		void output();
+		void print();
 };
 
 #endif//MOTORCYCLE_H

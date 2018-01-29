@@ -28,6 +28,7 @@ class Vehicle
 		char *model; //model of the vehicle
 		char *type; //type of the vehicle
 		static int numberVehicles; //current vehicle count
+		static int list;
 
 	public:
 		/* Constructors and Destructors */
@@ -41,6 +42,7 @@ class Vehicle
 		char*getModel();
 		char* getType();
 		static int getNumberVehicles();
+		static int getList();
 
 		/* Setters */
 		void setIDNumber(int id);
@@ -48,11 +50,11 @@ class Vehicle
 		void setBrand(char* brand);
 		void setModel(char* model);
 		void setType(char* type);
-		static void setNumberVehicles(int num);
-		static void incrimentVehicles();
-		static void decrementVehicles();
+		static void incrimentList();
 
 		/* Other Methods */
+		virtual void output();
+		virtual void print();
 };
 
 #endif//VEHICLE_H

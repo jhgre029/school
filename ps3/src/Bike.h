@@ -27,6 +27,8 @@ class Bike : public Vehicle, private Property
 		bool light; //true (false) if it has (not) a light
 		static int numberBikes; //current number of bikes
 		static std::ofstream outFile; //output file
+		static bool outFileExist;
+		static int list;
 
 	public:
 		/* Constructors and Destructors */
@@ -38,17 +40,17 @@ class Bike : public Vehicle, private Property
 		bool getHorn();
 		bool getLight();
 		static int getNumberBikes();
-		static std::ofstream getOutFile();
 
 		/* Setters */
 		void setHorn(bool horn);
 		void setLight(bool ligit);
 		static void setNumberBikes(int num);
-		static void incrimentBikes();
-		static void decrementBikes();
-		static void setOutFile(std::ofstream outFile);
 
 		/* Other Methods */
+		char* printHorn();
+		char* printLight();
+		void output();
+		void print();
 };
 
 #endif//BIKE_H

@@ -13,9 +13,9 @@
 #include "Motorcycle.h"
 
 int Motorcycle::numberMotorcycles = 0;
-int Motorcycle::list = 1;
+int Motorcycle::list = 0;
 bool Motorcycle::outFileExist = false;
-std::ofstream Motorcycle::outFile("Motorcycle.dat", std::ios::out);
+std::ofstream Motorcycle::outFile;
 
 /*****************************************************************************/
 /* Constructors and Destructors */
@@ -60,7 +60,7 @@ void Motorcycle::setEngineStrokes(int strokes)
 /*****************************************************************************/
 void Motorcycle::output()
 {
-	//outFile.open("Motorcycle.dat", std::ios::out);
+	outFile.open("Motorcycle.dat", std::ios::out);
 	if (!outFile.is_open())
 	{
 		std::cout << "Could not open Motorcycle.dat" << std::endl;
@@ -74,7 +74,7 @@ void Motorcycle::output()
 		outFileExist = true;
 	}
 
-
+	++list;
 	outFile << list
 		<< "\t" << getBrand()
 		<< "\t" << getModel()
@@ -86,5 +86,17 @@ void Motorcycle::output()
 		<< "\t" << getEngineStrokes()
 		<< "\t" << getEstimatedValue()
 		<< "\t" << getAdministrator() << std::endl;
-	++list;
+}
+
+void Motorcycle::print()
+{
+	std::cout << "Vehicle " << getList() << ": Motorcycle" << std::endl;
+	std::cout << "ID Number: " << getIDNumber() << "\tBrand: " << getBrand()
+		<< "\tModel: " << getModel() << "\tType: " << getType()
+		<< "\tWeight: " << getWeight() << std::endl;
+	std::cout << "CC: " << getCC() << "\tHP: " << getHP() << std::endl;
+	std::cout << "Engine Strokes: " << engineStrokes << std::endl;
+	std::cout << "Estimated Value: " << getEstimatedValue() << "\tAdministrator: " << getAdministrator()
+		<< std::endl;
+	incrimentList();
 }

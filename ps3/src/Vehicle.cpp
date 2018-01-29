@@ -13,6 +13,7 @@
 #include "Vehicle.h"
 
 int Vehicle::numberVehicles = 0;
+int Vehicle::list = 1;
 
 /*****************************************************************************/
 /* Constructors and Destructors */
@@ -86,6 +87,11 @@ int Vehicle::getNumberVehicles()
 	return numberVehicles;
 }
 
+int Vehicle::getList()
+{
+	return list;
+}
+
 /*****************************************************************************/
 /* Setters */
 /*****************************************************************************/
@@ -117,21 +123,21 @@ void Vehicle::setType(char* type)
 	this->type = type;
 }
 
-void Vehicle::setNumberVehicles(int num)
+void Vehicle::incrimentList()
 {
-	numberVehicles = num;
-}
-
-void Vehicle::incrimentVehicles()
-{
-	++numberVehicles;
-}
-
-void Vehicle::decrementVehicles()
-{
-	--numberVehicles;
+	++list;
 }
 
 /*****************************************************************************/
 /* Other Methods */
 /*****************************************************************************/
+void Vehicle::output()
+{
+
+}
+
+
+void Vehicle::print()
+{
+
+}

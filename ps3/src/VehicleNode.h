@@ -28,10 +28,11 @@ class VehicleNode
 		VehicleNode* prev; // pointer to previous node in list
 		VehicleNode* next; // pointer to next node in list
 		Vehicle* vehicle; // pointer to vehicle object
+		static bool exist; //Does this list exist?
 
 	public:
 		/* Constructors and Descructors */
-		VehicleNode();
+		VehicleNode(VehicleNode* head, Vehicle* v);
 		~VehicleNode();
 
 		/* Getters */
@@ -41,12 +42,13 @@ class VehicleNode
 		Vehicle* getVehicle();
 
 		/* Setters */
-		static void setHead(VehicleNode* head);
+		static void setHead(VehicleNode* node);
 		void setPrev(VehicleNode* prev);
 		void setNext(VehicleNode* next);
-		void setVehicle(Vehicle* vehicle);
 
 		/* Other Methods */
+		void output(VehicleNode* head);
+		void showVehicles(VehicleNode* head);
 };
 
 #endif//VEHICLENODE_H
