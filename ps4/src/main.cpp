@@ -37,6 +37,26 @@ int main(int argc, char* argv[])
 #else
 #ifdef PS4_2
 	Point* p[100];
+	int numPoints = 0;
+
+	std::cout << "Number of Points: ";
+	std::cin >> numPoints;
+	readPoints(p, numPoints);
+	
+	std::cout << "Points" << std::endl;
+	printPoints(p, numPoints);
+	std::cout << std::endl;
+
+	std::cout << "Points sorted in X-direction" << std::endl;
+	quickSortPoints(p, 0, numPoints - 1, &Point::getX);
+	printPoints(p, numPoints);
+	std::cout << std::endl;
+
+	std::cout << "Points sorted in Y-direction" << std::endl;
+	quickSortPoints(p, 0, numPoints - 1, &Point::getY);
+	printPoints(p, numPoints);
+	std::cout << std::endl;
+
 #endif 
 #endif
 	return EXIT_SUCCESS;
