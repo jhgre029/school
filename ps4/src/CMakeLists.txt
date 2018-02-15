@@ -32,4 +32,4 @@ file( GLOB SRCS *.cpp *.h )
 # Define the target application executable and the list of C source
 # and header files needed for the executable.
 
-add_executable ( projectname ${SRCS} )
+add_executable ( ps4 ${SRCS} )
