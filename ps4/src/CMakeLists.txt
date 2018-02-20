@@ -1,7 +1,6 @@
 # Author: Jacob Grendahl
 # NetID: jhgrendahl
 # Date: 2018-02-04
-
 # Project: ps4
 
 # This file is an exception to the Code of Academic Integrity, and may be reused without
